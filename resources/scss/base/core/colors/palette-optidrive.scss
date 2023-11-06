@@ -1,0 +1,21 @@
+$colors: (
+    'doc': #4e8df5, // Blue
+    'spreadsheat': #20a464, // Green
+    'presentation': #e03303, // Orange
+    'pdf': #dc3545, // Red
+    'image': #c49011, // Yellow
+    'audio': #6f42c1, // Purple
+    'play': #9a252b, // Deep Red
+    'archive': #6c757d, // Gray
+    'zip': #056562, // Deep greenish-blue
+    'code': #08c4c4, // Teal
+);
+
+@each $type, $color in $colors {
+    .icon-file-#{$type} {
+        color: $color;
+    }
+}
+
+
+

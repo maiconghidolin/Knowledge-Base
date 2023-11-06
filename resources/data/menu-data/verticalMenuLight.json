@@ -1,0 +1,10 @@
+{
+  "menu": [
+    {
+      "url": "main",
+      "name": "Drive",
+      "icon": "cloud",
+      "slug": "main.index"
+    }
+  ]
+}

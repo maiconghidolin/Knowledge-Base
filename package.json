@@ -1,0 +1,44 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "alpinejs": "^2.7.3",
+        "axios": "^0.25",
+        "cross-env": "^7.0",
+        "jquery": "^3.6.0",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.16.1",
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "5.0.0",
+        "rtlcss": "^3.0",
+        "sass": "1.30.0",
+        "sass-loader": "12.1.0",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "@wesleyhf/laravel-localization-js": "^0.0.2",
+        "animate.css": "^4.1.1",
+        "bootstrap": "~5.1.0",
+        "bootstrap-icons": "^1.10.2",
+        "crypto-js": "^4.1.1",
+        "dompurify": "^3.0.5",
+        "dragselect": "^2.5.5",
+        "laravel-echo": "^1.11.2",
+        "laravel-echo-server": "^1.6.2",
+        "mime-types": "^2.1.35",
+        "path": "^0.12.7",
+        "pusher": "^5.0.0",
+        "pusher-js": "^7.0.3",
+        "qrcode": "^1.5.1",
+        "validatorjs": "^3.22.1"
+    }
+}

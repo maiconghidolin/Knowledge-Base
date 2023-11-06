@@ -1,0 +1,34 @@
+{
+  "menu": [
+    {
+      "url": "home",
+      "name": "Home",
+      "icon": "home",
+      "slug": "home"
+    },
+    {
+      "url": "main",
+      "name": "Drive",
+      "icon": "cloud",
+      "slug": "main.index"
+    },
+    {
+      "url": "chat",
+      "name": "Chat",
+      "icon": "message-circle",
+      "slug": "chat"
+    },
+    {
+      "url": "colab",
+      "name": "Colab",
+      "icon": "users",
+      "slug": "colab"
+    },
+    {
+      "url": "flow",
+      "name": "Flow",
+      "icon": "grid",
+      "slug": "flow"
+    }
+  ]
+}

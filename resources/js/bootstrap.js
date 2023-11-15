@@ -15,6 +15,8 @@ window.Pusher = require('pusher-js');
 window.DragSelect = require('dragselect');
 window.DOMPurify = require('dompurify');
 
+require('./faq/index');
+
 window.__safe = function (dirty) {
     dirty = window.DOMPurify.sanitize(dirty, { SAFE_FOR_TEMPLATES: true });
     if (!dirty) {
@@ -27,3 +29,6 @@ window.__safe = function (dirty) {
     const htmlParse = dirty.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return htmlParse;
 }
+
+let faq = new Faq();
+faq.init();

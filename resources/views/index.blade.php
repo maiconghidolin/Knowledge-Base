@@ -19,7 +19,7 @@
                 <div class="sidebar-content faq-sidebar">
                     <div class="faq-app-menu">
                         <div class="add-article">
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#new-article-modal">
+                            <button type="button" class="btn btn-primary w-100" data-click="sidebar:add-article">
                                 Add article
                             </button>
                         </div>
@@ -28,12 +28,12 @@
                                 <h6 class="section-label mb-1">Categories</h6>
                                 <i data-feather="plus" class="cursor-pointer"></i>
                             </div>
-                            <div class="list-group list-group-filters">
-                                <a href="#" class="list-group-item list-group-item-action active">
+                            <div class="list-group category-list">
+                                <a href="#" class="list-group-item list-group-item-action active" data-click="sidebar:category">
                                     <span class="align-middle"> All</span>
                                 </a>
                                 @foreach($categories as $category)
-                                <a href="#" class="list-group-item list-group-item-action" data-id="{{ $category->id }}">
+                                <a href="#" class="list-group-item list-group-item-action" data-id="{{ $category->id }}" data-click="sidebar:category">
                                     <span class="align-middle"> {{ $category->name }}</span>
                                 </a>
                                 @endforeach
@@ -55,18 +55,17 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="content-right">
             <div class="content-wrapper">
                 <div class="content-body">
-                    <div class="body-content-overlay"></div>
+                    <div class="body-content-overlay" data-click="sidebar:overlay"></div>
                     <div class="faq-app-list">
 
                         <!-- faq search starts -->
                         <div class="app-fixed-search d-flex align-items-center">
-                            <div class="sidebar-toggle d-block d-lg-none ms-1">
+                            <div class="sidebar-toggle d-block d-lg-none ms-1" data-click="sidebar:toggle">
                                 <i data-feather="menu" class="font-medium-5"></i>
                             </div>
                             <div class="d-flex align-content-center justify-content-between w-100">
@@ -355,7 +354,5 @@
 @endsection
 
 @section('page-script')
-
-<script src="{{asset('js/scripts/pages/app-faq.js')}}"></script>
-
+<script src="{{asset('js/app.js')}}"></script>
 @endsection

@@ -1,8 +1,11 @@
 window.FaqExplorer = function (manager) {
     this.manager = manager;
+    this._activeCategoryId = null;
+    this._activeTagId = null;
 
     this._ui = {
         faqFilter: null,
+        faqArticleList: null,
         faqArticleListWrapper: null,
         noResults: null,
     }
@@ -18,6 +21,7 @@ window.FaqExplorer = function (manager) {
 
     this.initUI = function () {
         this._ui.faqFilter = $('#faq-search');
+        this._ui.faqArticleList = $('#faq-article-list');
         this._ui.faqArticleListWrapper = $('.faq-article-list-wrapper');
         this._ui.noResults = $('.no-results');
     }
@@ -61,10 +65,31 @@ window.FaqExplorer = function (manager) {
         }
     }
 
-    this.getArticlesByCategory = async function (categoryId = null) {
-        console.debug(`Getting articles from categoryId = ${categoryId ?? 'any'}`);
+    this.setActiveCategory = async function (categoryId = null) {
+        this._activeCategoryId = categoryId;
+    }
 
+    this.setActiveTag = async function (tagId = null) {
+        this._activeTagId = tagId;
+    }
 
+    this.getArticles = async function () {
+        console.debug(`Getting articles from categoryId = ${this._activeCategoryId ?? 'any'}, tagId = ${this._activeTagId ?? 'any'}`);
+
+        await this._loadUpdatedContentView();
+    }
+
+    this._loadUpdatedContentView = async function () {
+        let layoutUrl = 'articles/list';
+
+        if (this._activeCategoryId && this._activeTagId)
+            layoutUrl += `?category=${this._activeCategoryId}&tag=${this._activeTagId}`;
+        else if (this._activeCategoryId)
+            layoutUrl += `?category=${this._activeCategoryId}`;
+        else if (this._activeTagId)
+            layoutUrl += `?tag=${this._activeTagId}`;
+
+        await this.manager.loadLayout(layoutUrl, this._ui.faqArticleList[0]);
     }
 
 }

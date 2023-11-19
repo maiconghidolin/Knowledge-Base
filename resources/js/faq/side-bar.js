@@ -5,7 +5,8 @@ window.FaqSideBar = function (manager) {
         overlay: null,
         sidebarLeft: null,
         sidebarMenuList: null,
-        categoryList: null
+        categoryList: null,
+        tagList: null,
     }
 
     this.init = async function () {
@@ -22,6 +23,7 @@ window.FaqSideBar = function (manager) {
         this._ui.sidebarLeft = $('.sidebar-left');
         this._ui.sidebarMenuList = $('.sidebar-menu-list');
         this._ui.categoryList = $('.category-list');
+        this._ui.tagList = $('.tag-list');
     }
 
     this.initScroll = function () {
@@ -54,6 +56,7 @@ window.FaqSideBar = function (manager) {
             'sidebar:add-article': this._addArticleClick.bind(this),
             'sidebar:overlay': this._overlayClick.bind(this),
             'sidebar:category': this._sidebarCategoryClick.bind(this),
+            'sidebar:tag': this._sidebarTagClick.bind(this),
         }
 
         if (!options[action]) {
@@ -84,8 +87,18 @@ window.FaqSideBar = function (manager) {
         target.addClass('active');
 
         const categoryId = target.data('id');
+        this.manager.explorer.setActiveCategory(categoryId);
+        this.manager.explorer.getArticles();
+    }
 
-        this.manager.explorer.getArticlesByCategory(categoryId);
+    this._sidebarTagClick = function (target) {
+        this._ui.tagList.find('a').removeClass('active');
+
+        target.addClass('active');
+
+        const tagId = target.data('id');
+        this.manager.explorer.setActiveTag(tagId);
+        this.manager.explorer.getArticles();
     }
 
 }

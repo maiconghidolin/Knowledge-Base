@@ -16,6 +16,8 @@ window.Faq = function () {
         this._initUI();
         this._initComponentsAndModals();
 
+        this.explorer.getArticles();
+
         this.rehidrate();
     }
 
@@ -86,6 +88,33 @@ window.Faq = function () {
     this.rehidrate = function () {
         this.dataClick.rehidrate();
         feather.replace();
+    }
+
+    this.loadLayout = async function (url, container) {
+        console.debug(`Layout loading start:`, url);
+
+        const response = await axios.get(url);
+
+        if (response.status != 200) {
+            console.error(`Layout load failed:`, response);
+            return;
+        }
+
+        console.debug(`Layout loaded from:`, url, { data: response.data });
+
+        const tempDomElement = document.createElement('div');
+        tempDomElement.innerHTML = response.data;
+
+        window.morphdom(container, tempDomElement, {
+            onBeforeElUpdated: function (fromEl, toEl) {
+                if (fromEl.isEqualNode(toEl)) {
+                    return false
+                }
+
+                return true
+            },
+            childrenOnly: true,
+        });
     }
 
 }

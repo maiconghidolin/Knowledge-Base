@@ -17,6 +17,31 @@ class ArticleController extends Controller
         return view('articles.index', compact('articles'));
     }
 
+    public function list(Request $request)
+    {
+        $articles = Article::with(['tags']);
+
+        if ($request->has('category')) {
+            $categoryId = $request->input('category');
+
+            $articles = $articles->where('category_id', $categoryId);
+        }
+
+        if ($request->has('tag')) {
+            $tagId = $request->input('tag');
+
+            $articles = $articles->whereHas('tags', function ($query) use ($tagId) {
+                $query->where('id', $tagId);
+            });
+        }
+
+        $articles = $articles
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('explorer', ['articles' => $articles]);
+    }
+
     public function show($slug, $article)
     {
         $article = Article::with(['tags', 'category'])

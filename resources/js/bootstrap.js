@@ -12,7 +12,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.CryptoJS = require('crypto-js');
 
 window.Pusher = require('pusher-js');
+
+import morphdom from 'morphdom';
+window.morphdom = morphdom;
+
 window.DragSelect = require('dragselect');
+
 window.DOMPurify = require('dompurify');
 
 require('./faq/index');

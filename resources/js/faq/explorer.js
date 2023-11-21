@@ -69,8 +69,16 @@ window.FaqExplorer = function (manager) {
         this._activeCategoryId = categoryId;
     }
 
+    this.getActiveCategoryId = function () {
+        return this._activeCategoryId;
+    }
+
     this.setActiveTag = async function (tagId = null) {
         this._activeTagId = tagId;
+    }
+
+    this.getActiveTagId = function () {
+        return this._activeTagId;
     }
 
     this.getArticles = async function () {
@@ -80,7 +88,7 @@ window.FaqExplorer = function (manager) {
     }
 
     this._loadUpdatedContentView = async function () {
-        let layoutUrl = 'articles/list';
+        let layoutUrl = 'faq/articles/list';
 
         if (this._activeCategoryId && this._activeTagId)
             layoutUrl += `?category=${this._activeCategoryId}&tag=${this._activeTagId}`;

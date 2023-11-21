@@ -24,20 +24,54 @@
                             </button>
                         </div>
                         <div class="sidebar-menu-list">
+
+                            <!-- criar um container para categorias e outro para tags
+                            criar um blade  para categorias e outro para tags
+                            no controller retornar as respectivas views atualizadas
+                            via JS setar o content dos respectivos containers -->
+
                             <div class="mt-3 px-2 d-flex justify-content-between">
                                 <h6 class="section-label mb-1">Categories</h6>
-                                <i data-feather="plus" class="cursor-pointer"></i>
+                                <i data-feather="plus" class="cursor-pointer" data-bs-toggle="modal" data-bs-target=".faq-modal-category"></i>
                             </div>
                             <div class="list-group category-list">
-                                <a href="#" class="list-group-item list-group-item-action active" data-click="sidebar:category">
-                                    <span class="align-middle"> All</span>
-                                </a>
+                                <div class="list-group-item list-group-item-action category-item active" data-click="sidebar:category">
+                                    <div class="overflow-hidden">
+                                        <a href="javascript:void(0)" class="text-body">
+                                            <div class="d-flex align-items-center">
+                                                <span class="align-middle"> All</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                                 @foreach($categories as $category)
-                                <a href="#" class="list-group-item list-group-item-action" data-id="{{ $category->id }}" data-click="sidebar:category">
-                                    <span class="align-middle"> {{ $category->name }}</span>
-                                </a>
+                                <div class="list-group-item list-group-item-action category-item d-flex justify-content-between" data-id="{{ $category->id }}" data-click="sidebar:category">
+
+                                    <div class="overflow-hidden">
+                                        <a href="javascript:void(0)" class="text-body">
+                                            <div class="d-flex align-items-center">
+                                                <span class="align-middle"> {{ $category->name }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="category-item-menus hover-action">
+                                        <div class="d-flex">
+                                            <a data-bs-toggle="modal" data-bs-target=".faq-modal-category" href="javascript:void(0)" class="text-body d-flex justify-content-center align-items-center">
+                                                <i data-feather="edit" class="me-50 font-medium-3"></i>
+                                            </a>
+                                            <a data-click="sidebar:category-delete" href="javascript:void(0)" class="text-body d-flex justify-content-center align-items-center">
+                                                <i data-feather="trash" class="me-50 font-medium-3"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
                                 @endforeach
                             </div>
+
+
+
                             <div class="mt-3 px-2 d-flex justify-content-between">
                                 <h6 class="section-label mb-1">Tags</h6>
                                 <i data-feather="plus" class="cursor-pointer"></i>
@@ -94,6 +128,8 @@
         </div>
     </div>
 </div>
+
+@include('modals.category')
 
 @endsection
 

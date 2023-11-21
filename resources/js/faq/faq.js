@@ -3,6 +3,8 @@ window.Faq = function () {
     this.sideBar = null;
     this.dataClick = null;
     this.explorer = null;
+    this.categories = null;
+    this.modals = null;
 
     this.listeners = {};
 
@@ -12,6 +14,12 @@ window.Faq = function () {
         this.sideBar = new FaqSideBar(this);
         this.dataClick = new FaqDataClick(this);
         this.explorer = new FaqExplorer(this);
+        this.categories = new FaqCategories(this);
+
+        this.modals = {
+            generic: new FaqGenericModal(this),
+            category: new FaqCategoryModal(this),
+        }
 
         this._initUI();
         this._initComponentsAndModals();

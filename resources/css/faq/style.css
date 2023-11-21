@@ -1,0 +1,14 @@
+.faq-modal-category-name-input {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 0.357rem !important;
+    border-bottom-right-radius: 0.357rem !important;
+}
+
+.hover-action {
+    display: none;
+    top: 0;
+    right: 1.9rem;
+    /* This value is the same as the padding added by the list-group-item bootstrap class */
+    z-index: 3;
+}

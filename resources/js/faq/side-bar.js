@@ -82,7 +82,7 @@ window.FaqSideBar = function (manager) {
     }
 
     this._sidebarCategoryClick = function (target) {
-        this._ui.categoryList.find('a').removeClass('active');
+        this._ui.categoryList.find('.category-item').removeClass('active');
 
         target.addClass('active');
 
